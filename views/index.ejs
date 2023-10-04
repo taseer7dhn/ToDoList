@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>To do list</title>
+</head>
+
+<body>
+
+    <div class="heading">
+        <h1 class="h1"> My To Do List</h1>
+    </div>
+
+    <div class="form">
+        <form action="/" method="POST">
+
+            <input class="input" type="text" name="job" placeholder="Enter the list">
+            <button class="button" name="button">+</button>
+        </form>
+    </div>
+
+    <% if (locals.items) {%>
+        <div class="order-div">
+            <ol class="list">
+                <% items.forEach(function(result){ %>
+                    <form action="/delete" method="POST">
+                        <div class="item">
+                            <li>
+                                <input type="checkbox" name="checkbox1"  value="<%=result._id  %>"
+                                   class="cb" onChange="this.form.submit()">
+                               
+                                <%= result.name %>
+                            </li>
+
+                        </div>
+                    </form>
+                    <% })%>
+            </ol>
+        </div>
+
+
+        
+           
+            <%}else{%>
+                <p>Please add an item</p>
+                <%}%>
+
+</body>
+
+</html>
